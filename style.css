@@ -1,0 +1,428 @@
+
+.logohome{
+    align-self: flex-start;
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+   width: 11vh;
+   height: 11vh;
+   border-radius: 100%;
+    
+}
+#about {
+    color: blue;
+}
+.homenav{
+    text-align: right;
+    
+}
+
+.imgdiv{
+    background-color: transparent;
+    background-image: url(./img/othercustompexels-the-lazy-artist-gallery-4502556.jpg);
+    background-size:cover;
+    background-attachment: fixed;
+    background-position: center;
+    
+}
+
+#compus-header {
+    margin-top: auto;
+    text-align: end;
+}
+
+.divCamp{
+    
+    background-repeat: no-repeat;
+    
+    
+   
+    }
+    .classbody{
+        background-color:transparent;
+        
+    }
+    
+
+#allclass {position: relative;
+scroll-behavior: smooth;
+background-size: cover;
+}
+
+
+
+
+
+#regis {
+    color: aliceblue; justify-items: right;
+}
+   
+
+    #signin {
+        animation: alternate; color: gold; justify-items: center;
+    }
+
+
+   
+    
+
+  
+
+
+#buk {
+    color: black;
+}
+
+#stform {
+    position: -ms-page; justify-content: center;
+}
+.body-class {
+    background-image: url(./img/pexels-pixabay-268533.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    }
+#index-title {
+text-align: center;
+color: mediumblue;
+
+}
+    
+#accounte{
+    color: green;
+}
+
+
+
+
+
+    
+
+
+#remove-button{
+    margin-top: 5%;
+    color: red;
+    background-color: transparent;
+    
+    justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 6vh;
+        border-radius: 100px;
+         border:none;
+         text-align: start;
+}
+#addline {
+    margin-left: 61%;
+    margin-top: 3%;
+    color: aliceblue;
+    text-align: right;
+}
+#list-buttonline {
+    margin-left: 65%;
+    margin-bottom: 5%;
+    text-align: right;
+}
+
+.avail{
+    
+margin-top: 1%;
+text-align: center;
+list-style-position: inside;
+}
+#avail{
+    color: green;
+    text-align: right;
+    
+  
+    
+}
+
+#avail-button {
+    background-color:transparent;
+    color:aqua;
+    
+}
+
+
+
+
+#occup-button{
+    margin-top: 15%;
+    color: wheat;
+    margin-top: 5%;
+    background-color: transparent;
+    justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 6vh;
+        border-radius: 100px;
+        border-bottom-color:green;
+        border-left-color: gold;
+        border-top:none;
+         border-right:none;
+         border-width: 1vh;
+         text-align: start;
+}
+#camp-about {
+    color: aliceblue;
+}
+#camp-contact {
+    color: aliceblue;
+}
+
+#book-button {
+    background-color: transparent;
+    color:gold ;
+    justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 9vh;
+    border-radius: 100px;
+         border:none;
+         text-align: start;
+         font-size: large;
+    
+}
+#add-button {
+    color: aliceblue;
+    background-color:transparent;
+    display: flex;
+        align-items: center;
+        position: relative;
+        height: 9vh;
+        border-radius: 100px;
+        border-bottom-color:green;
+        border-left-color: green;
+        border-top:none;
+         border-right-color: gold;
+         border-width: 1vh;
+         text-align: right;
+
+}
+
+
+#fakebutton{
+    color: white;
+        background-color:transparent;
+        
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-top: 25%;
+        margin-left: 45%;
+        height: 13vh;
+        border-radius: 100px;
+        border-bottom-color:green;
+        border-left-color: green;
+        border-top-color: green;
+         border-right-color: gold;
+         border-width: 9px;
+        
+        
+        
+    }
+
+    #forcedHome{
+        color: aliceblue;
+    }
+
+    #avatar {
+        border-radius: 51px;
+        max-width: max-content;
+    
+
+        
+        
+    }
+
+    #bke{
+        color: aliceblue;
+    }
+
+    #bookform{
+        visibility: hidden;
+    }
+
+    #reprForm{
+        visibility: hidden;
+    }
+    #A600h {
+        visibility: hidden;
+        
+    }
+
+#addform {
+    
+    color: aliceblue;
+    text-align: justify;
+    
+
+}
+
+#bookspan{
+    visibility: hidden;
+}
+
+#list-button{
+    color: blue;
+    background-color:transparent;
+    display: flex;
+        align-items: center;
+        position: relative;
+        height: 9vh;
+        border-radius: 100px;
+        border: none;
+      
+}
+
+#listspan{
+    visibility: hidden;
+}
+#removeSpan{
+    visibility: hidden;
+}
+
+#message1{
+    visibility:hidden
+}
+
+
+#regisWelcome{
+    margin-left: 31%;
+}
+
+#regbody{
+    position: relative;
+    justify-content: center;
+    margin:1%  9%;
+   background-color: #4b647b;
+   color: aliceblue;
+   
+}
+.inchargeKLab{
+    margin-bottom: 0%;
+}
+#inChargeK{
+    margin-top: 0vh;
+}
+
+#Stlist{
+    margin-left: 9%;
+}
+.Stlist{
+    margin-left: 12%; 
+}
+
+#inCharge{
+    margin-left: 9%;  
+} 
+
+.inCharge{
+    margin-left: 47%;  
+}
+
+.stkey{
+    margin-left: 7%;     
+}
+
+.rebatom{
+    margin-left: 43%;
+}
+
+#instChoose{
+    
+    color: gold;
+}
+#roll{
+  
+    color: gold; 
+     
+}
+#rollSel{
+    visibility: hidden;
+
+}
+#signInOptions{
+    visibility: hidden;
+    text-align: end;
+}
+
+#SignInForm{
+    visibility: hidden;
+}
+
+#sigInref1{
+    visibility: hidden;
+}
+
+#sigInref2{
+    visibility: hidden;
+}
+
+#sigInref3{
+    visibility: hidden;
+}
+
+#button{
+    background-color: transparent;
+    color: aliceblue;
+    border-radius: 9%;
+}
+
+
+#instId{
+    text-align: center;
+    color: darkgreen;
+}
+
+
+#removeIt{
+    background-color: transparent;
+    color: red;
+    visibility: hidden;
+}
+
+#occupspan{
+    visibility: hidden;
+    
+}
+
+#undo{
+
+    background-color: transparent;
+    justify-content: center;
+        display: flex;
+        align-items: center;
+        position: relative;
+        height: 5vh;
+        border-radius: 100px;
+        border-bottom:none;
+        border-left:none;
+        border-top-color: green;
+         border-right-color: gold;
+         border-width: 1vh;
+         text-align: start;
+
+}
+#undoButton{
+    color: white;
+    justify-content: center;
+    background-color: transparent;
+    text-align: start;
+    
+    
+}
+
+#timeUl{
+    text-align: start;
+}
+
+.homenav{
+    text-align: right;
+}
+

@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+        <html lang="en" id="home-class">
+
+
+            <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title id="home-title"> Welcome to ClasS !</title>
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                <link rel="stylesheet" href="style.css">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+                
+                    
+          
+              </head>
+            <body onload="invironnement()" class="classbody" id="campus">
+             <div class="imgdiv">
+
+             
+              <h3 id="instId">  </h3>
+                <header class="Camp"  id="compus-header">
+                    <nav>
+                      <a href="./index.html"id="campus-home" > HOME </a> 
+                      <a onclick="AboutFromCampus ()" id="camp-about" > ABOUT </a> 
+                       <a href="mailto:alassane.traore@student.moringaschool.com" id="contact"> CONTACT US </a> 
+                      
+                       <img  src= "" alt="You" id="avatar">
+                      
+                    </nav>
+                   
+                </header>
+            
+                <div class="divCamp">
+             <ul class="Camp">
+                <li id="bookli" class="Camp">
+                  <strong>   
+                    <select name="" id="book-button"> 
+                      <option value="BOOK-AMPHI"> Book Amphi</option>
+                    </select>
+                  </strong>
+                  
+                  
+                                        
+                    <form id="reprForm">  
+                      
+                      <label  for="group">Group</label>
+                      <input id="group" type="text" required > <br>
+                      <label for="Time"> will be free </label>
+                      
+                      <input id="time" type="datetime-local"> 
+                      <input id="repr" type="submit" value="ok">
+                   
+                     </form>
+                      
+                </li>
+                
+
+                   <footer class="avail" id="avail">
+                    <div class="avail"  id="avail-button" >AVAILLABLE</div> 
+                    <strong>
+
+                      <ol id="availlist" class="avail" >
+            
+                       
+                      </ol>
+
+                    </strong>
+                   
+                    
+                   </footer> 
+                   <p id="msg" >   </p>
+                   <div  id="undoDiv">
+                    <select name="undo" id="undo">
+                      <option value="here"> undo Your booking here </option>
+                      <!--<option value=""> </option> -->
+                    </select>
+                    <button id="undoButton" >undo </button>
+                    
+                  </div>
+                  <strong>
+                    <ul id="timeUl" >
+
+                    </ul>
+                  
+                  </strong>
+                  
+                <li class="Camp">
+                    <button type="button" id="occup-button"> Occupancy Overview</button>
+                    <span  id="occupspan" > 
+                      
+                    </span>
+                </li>
+
+
+                <footer class="Camp" id="addline" >
+                   <button id="add-button"> Add Amphi</button>
+
+<span>
+  <form hidden id="addform" action="" method="">
+    <label for="amphiName" id="amphiName"> Amphi </label>
+<input type="text" name="" id="amphuInput" placeholder="Amphi Name" required > <br>
+<label for="seats"  > Seats </label>
+<input id="seats" placeholder="number of seats available" accept="1-9" type="text" required > 
+<button id="submitAmphi" type="button"   > + </button>
+
+   </form>
+
+  </span>
+</footer>
+              <li  class="Camp"id="list-buttonline">
+                <select name="" id="list-button">
+                  <option value="list"> Amphi list </option>
+
+                </select>
+                
+                <span  >
+<ol id="listspan" > 
+
+
+</ol>
+                </span>
+            </li> 
+            <div class="Camp"> 
+              <select name="" id="remove-button"> 
+                <option value="remove"> Remove from List   </option> 
+                
+              </select>  
+              <button id="removeIt"> x </button>
+               <!-- <span  >
+                  <ol id="removeSpan" >
+
+                  </ol>
+                
+                </span>-->
+            </div>
+             </ul> 
+            </div>
+
+          </div>
+              
+              <a id="forcedHome" href="./index.html"></a> 
+            
+
+            <script  src="./app.js"></script>
+
+            
+
+
+            <script type="module">
+              // Import the functions you need from the SDKs you need
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+              import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+              // TODO: Add SDKs for Firebase products that you want to use
+              // https://firebase.google.com/docs/web/setup#available-libraries
+            
+              // Your web app's Firebase configuration
+              // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+              const firebaseConfig = {
+                apiKey: "AIzaSyBmc_KqjvSyDz9QLnveB4GasIYGwe2V-34",
+                authDomain: "power-class.firebaseapp.com",
+                databaseURL: "https://power-class-default-rtdb.firebaseio.com",
+                projectId: "power-class",
+                storageBucket: "power-class.appspot.com",
+                messagingSenderId: "102798294958",
+                appId: "1:102798294958:web:6db01ad48a8ca6fe5e523f",
+                measurementId: "G-4RZHYSJDCM"
+              };
+            
+              // Initialize Firebase
+              const app = initializeApp(firebaseConfig);
+              const analytics = getAnalytics(app);
+          
+              import{getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField , where, query,getDocs
+          }
+          from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js"
+          
+          
+          // Initialize Cloud Firestore and get a reference to the service
+          const db = getFirestore();
+          
+          
+
+
+          const //bookForm = document.getElementById('bookform'),
+ bookButton = document.getElementById('book-button'),
+ classrep = document.getElementById('repr'),
+ reprform = document.getElementById('reprForm'),
+ time = document.getElementById('time'),
+ group = document.getElementById('group'),
+ booking = document.getElementById('booksub'),
+ select = document.getElementById('select'),
+ availDiv = document.getElementById('a600'),
+ availL = document.getElementById("availlist"),
+ amphiName = document.getElementById('amphiName'),
+ amphiInput = document.getElementById("amphuInput"),
+ seats = document.getElementById("seats"),
+ amphiSubmit = document.getElementById("submitAmphi" ),
+ addButton = document.getElementById("add-button"),
+ //addForm = document.getElementById("addform"),
+ bookDiv = document.getElementById("bookdiv"),
+ bookspan = document.getElementById("bookspan"),
+ listSpan = document.getElementById("listspan"),
+ removeSpan =document.getElementById('removeSpan'),
+ listButton = document.getElementById('list-button'),
+ removeButton = document.getElementById('remove-button'),
+ occupButton = document.getElementById("occup-button"),
+
+ undoSelect = document.getElementById ('undo'),
+ //undoOpton = document.getElementById('toUndo'),
+undoDiv = document.getElementById('undoDiv'),
+undoButton = document.getElementById('undoButton'),
+meassage = document.getElementById('msg')
+
+
+let roll = localStorage.getItem('roll'),
+inst = localStorage.getItem('Institution'),
+nam = localStorage.getItem('Name');
+
+
+
+
+         
+
+
+          
+          
+          async function addnewAmphi_customID () {
+          //e.preventDefault();
+          
+          var ref = doc(db, inst, `${amphiInput.value} (${seats.value})`);
+          const docRef = await setDoc(
+          ref,
+          { newAmphi : `${amphiInput.value} (${seats.value})`,
+         // newAmphiClone:  `${amphiInput.value} (${seats.value})`
+         clone: false
+          
+          },
+
+          )
+          .then(()=>
+          alert(`${amphiInput.value} added successfully!`)
+          )
+          .catch((error)=>
+          alert(`failed to add ${amphiInput.value}`+ error)
+          )
+          
+          
+        }
+       
+        
+        
+        
+
+
+        async function addClone_customID () {
+          
+          
+          var ref = doc(db, inst, `${amphiInput.value} (${seats.value})(clone)`);
+          const docRef = await setDoc(
+          ref,
+          { //newAmphi : `${amphiInput.value} (${seats.value})`,
+          newAmphiClone:  `${amphiInput.value} (${seats.value})`,
+          clone: true
+          
+          
+          },
+
+          )
+          //.then(()=>
+         // alert(`${amphiInput.value}(clone) added successfully!`)
+         // )
+          .catch((error)=>
+          alert(`failed to add ${amphiInput.value}`+ error)
+          ) 
+        }
+
+        amphiSubmit.addEventListener('click',function addFunctions(e){
+          e.preventDefault();
+          addnewAmphi_customID () ;
+          addClone_customID ();
+        
+        }
+
+         )
+
+
+
+    
+
+
+const q = query(collection(db, inst), where("clone" ,"==", false ));
+const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc)=> {
+         // console.log(doc.id, "=>", doc.data());
+          let oneAmphi= document.createElement('option');
+          listButton.appendChild(oneAmphi);
+          oneAmphi.value = `${doc.data().newAmphi}`
+          oneAmphi.innerHTML = `${doc.data().newAmphi}`
+          let forRemove= document.createElement('option');
+          removeButton.appendChild(forRemove);
+          forRemove.value = `${doc.data().newAmphi}`;
+          forRemove.innerHTML = `${doc.data().newAmphi}`;
+        })
+
+         
+        
+        const qq = query(collection(db, inst), where("clone","==", true ));
+const querySnapshotq = await getDocs(qq);
+
+querySnapshotq.forEach((doc)=> {
+
+          let forBooking= document.createElement('option');
+          bookButton.appendChild(forBooking);
+          forBooking.value = `${doc.data().newAmphiClone}`;
+          forBooking.innerHTML= `${doc.data().newAmphiClone}`;
+          let newAvail = document.createElement('li');
+  
+  availL.appendChild(newAvail);
+  newAvail.innerHTML = `${doc.data().newAmphiClone}`;
+
+          
+          //let forInt = eachInstitution.innerText;
+
+        }); 
+
+
+
+
+
+
+
+
+
+       
+const removeIt = document.getElementById('removeIt');
+
+
+          
+          
+
+
+const otherquewy2 = query(collection(db, inst), where("isBooked","==", true));
+        const querySnapshotother2 = await getDocs(otherquewy2);
+         
+        group.addEventListener('input', 
+          function preventDubleBook(){
+        querySnapshotother2.forEach((doc)=>{
+          //console.log(doc.id, "=>", doc.data());
+          //console.log('here it is !');
+        let grp=  doc.data().group
+        let deadline = doc.data().till
+if(group.value === grp && new Date(deadline)- new Date()  >= 0  ){
+classrep.style.visibility = 'hidden'
+group.value = 'double bookings are not possible';
+group.style.color = 'red';
+}})
+})
+
+//function preventDubleBookClick (e){}
+        
+
+
+
+      
+      
+
+          async function setBookedAmphi_customID () {
+          //e.preventDefault();
+          if (group.value === '' 
+  || time.value === ''
+   ){
+
+alert('The booking could not succed ! Note: The Group precision is mendatory and the facility can not be occupated more than 18 Hours!')
+  }else{
+
+          let theOption = document.getElementById('book-button');
+          let saveBooking = localStorage.setItem('booked',theOption.value);
+           
+          localStorage.setItem('bis', time.value);
+        
+
+          var ref = doc (db, inst, `${theOption.value}(booked)` );
+          const docRef = await setDoc(
+          ref,
+          { 
+            boocked: theOption.value ,
+          occupMessage:  `${group.value} is using ${theOption.value}  till ${time.value}`,
+          till: time.value,
+          isBooked : true,
+          group: `${group.value}` 
+          },
+          )
+          .then(()=>
+          alert(`${group.value} is using ${theOption.value} till ${time.value}`)
+          )
+          .catch((error)=>
+          alert(`failed to set ${theOption.value} `+ error)
+          ) 
+         
+    
+      
+      }
+    }
+
+
+ 
+  
+  
+    async function deleteclonedAmphi(){
+      if (group.value === '' 
+  || time.value === ''
+   ){
+
+alert('The booking could not succed ! Note: The Group and Time precisions are mendatory!')
+  } else{
+// var ref = (db,inst, `${deleteclonedAmphi.value}(clone)` )
+      let detetebookedAmphi = document.getElementById('book-button')
+      await deleteDoc(doc(db, inst, `${detetebookedAmphi.value}(clone)`)) 
+
+     // .then(()=>
+         // alert(`${group.value} is using ${detetebookedAmphi.value} till ${time.value}`)
+          
+        //  )
+          .catch((error)=>
+          alert(`failed to set ${detetebookedAmphi.value} `+ error)
+          ) 
+    } 
+        
+    }
+  
+
+    classrep.addEventListener('click', async function book (e){
+      e.preventDefault();
+
+  classrep.style.visibility= 'hidden';
+  //undoDiv.style.visibility = 'visible';
+  
+  
+  setBookedAmphi_customID();
+deleteclonedAmphi();
+
+    }) 
+
+    let yourBooking = localStorage.getItem('booked');
+    let undoOpton = document.createElement('option');
+    undoOpton.value=  yourBooking;
+undoOpton.innerHTML = yourBooking;
+undoSelect.appendChild(undoOpton);
+    //const saveBooked  = ()=>{
+      
+      
+
+
+
+    //}
+    
+
+
+
+  
+   
+    
+    
+
+           
+        
+      
+removeIt.addEventListener('click', async function(){
+
+  await deleteDoc(doc(db, inst, `${removeButton.value}`));
+  await deleteDoc(doc(db, inst, `${removeButton.value}(clone)`));
+  await deleteDoc(doc(db, inst, `${removeButton.value}(booked)`));
+})
+
+removeButton.addEventListener('change', function(){
+  removeIt.style.visibility = 'visible';
+})
+
+bookButton.addEventListener('change', function(){
+reprform.style.visibility = 'visible'
+})
+
+occupButton.addEventListener('click',function(){
+  let occupspan = document.getElementById('occupspan')
+  occupspan.style.visibility = 'visible';
+})
+          
+const qqq = query(collection(db, inst), where("isBooked" ,"==", true ));
+const querySnapshotqq = await getDocs(qqq);
+        querySnapshotqq.forEach((doc)=> {
+          //console.log(doc.id, "=>", doc.data());
+          let deadline = doc.data().till
+          if( new Date(deadline)- new Date()  <= 0) {
+            let newForBooking= document.createElement('option');
+          bookButton.appendChild(newForBooking);
+          newForBooking.value = `${doc.data().boocked}`;
+          newForBooking.innerHTML= `${doc.data().boocked}`;
+          let othernewAvail = document.createElement('li');
+          availL.appendChild(othernewAvail);
+          othernewAvail.innerHTML = `${doc.data().boocked}`;
+
+          } else{
+            let mssage = document.createElement('li');
+          document.getElementById('occupspan').appendChild(mssage);
+          mssage.innerHTML = doc.data().occupMessage;
+          mssage.id = doc.data().occupMessage 
+          }
+          
+          
+        
+        })
+
+
+        let verify = localStorage.getItem('booked');
+        async function setunbook_customID () {
+          //e.preventDefault();
+         
+          if (verify !== verify 
+   ){
+
+alert('You do not have any right to undo this booking !')
+  }else{
+          //let settingRef = document.getElementById('book-button');
+          
+          var ref = doc (db, inst, `${verify}(clone)` );
+          const docRef = await setDoc(
+          ref,
+          { 
+            newAmphiClone: verify,
+          clone: true
+          },
+          )
+          .then(()=>
+          alert(`The booking of  ${verify} has been undone successfully at ${new Date()} !`)
+          )
+          .catch((error)=>
+          alert(`failed to set ${verify} `+ error)
+          ) 
+         
+    
+      
+      }
+    }
+
+  
+  
+    async function deletebookedAmphi(){
+      setunbook_customID ?
+      await deleteDoc(doc(db, inst, `${verify}(booked)`)) 
+
+      .then(()=>
+          alert(`The booking of ${verify} was successul at ${new Date()}!`)
+          )
+          .catch((error)=>
+          alert(`failed to undo the booking of ${verify} `+ error)
+          ) 
+          : alert(` Impossible to undo the booking of ${verify}! Please try again !`)
+
+    } 
+
+
+    undoButton.addEventListener('click',()=>{
+setunbook_customID ();
+deletebookedAmphi();
+localStorage.removeItem('booked');
+localStorage.removeItem('bis');
+})
+
+        
+
+           
+       
+
+        
+        
+let autorefresh = localStorage.getItem('bis');
+  if ( new Date(autorefresh)  - new Date() <= 0){
+    localStorage.removeItem('bis');
+    localStorage.removeItem('booked')
+  }else{
+    let timeSet = new Date(autorefresh)  - new Date();
+    let mili = timeSet/ 60000;
+    let min =  Math.round(mili);
+let timeCounte = document.createElement ('li');
+document.getElementById('timeUl').appendChild(timeCounte);
+timeCounte.innerHTML = `Your booking expires in ${min} Minutes !`
+timeCounte.style.color = 'blue' ;
+if(min > 120){
+ //let milhr = min/60
+let hrs = min/60;    //Math.floor(milhr) ;
+timeCounte.innerHTML = `Your booking expires in ${hrs} hours !`
+}
+
+if (min <= 9 ){
+  timeCounte.style.color = 'red'  
+} if (min < 2){
+  alert('booking expired!Learnig facility is availlable for other users!')
+}
+  }
+  
+        
+        
+ 
+       
+           
+
+
+
+
+
+            </script>
+ <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"> </script>
+
+<script>
+
+
+let config = {
+  enableTime: true,
+    dateFormat: "Y-m-d H:i",
+
+    minDate: "today",
+    maxDate:new Date().fp_incr(1),
+    parseDate: (datestr, format) => {
+    return moment(datestr, format, true).toDate()}
+    //altInput: true,
+    //altFormat: "F j, Y",
+    //dateFormat: "Y-m-d",
+   
+}
+
+
+
+
+flatpickr("input[type = datetime-local]", config
+);
+
+
+
+   
+
+
+
+
+    
+
+</script>
+
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+            
+                   
+
+
+
+</body>
+                  
+                   
+                    
+            
+                    
+                   
+                    
+                    
+                   
+                  
+                   </html>
+
+                   
