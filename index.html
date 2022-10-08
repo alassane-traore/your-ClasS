@@ -194,7 +194,7 @@ rollSel.style.visibility = 'visible';
 
         const querySnapshot = await getDocs(collection(db, 'Institutions'));
         querySnapshot.forEach((doc)=> {
-          console.log(doc.id, "=>", doc.data());
+         //console.log(doc.id, "=>", doc.data());
           let eachInstitution = document.createElement('option');
           instSelect.appendChild(eachInstitution);
           eachInstitution.value = `${doc.data().institutionName}`
@@ -246,12 +246,12 @@ signInRef2.addEventListener('click', async function(e){
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data());
+ // console.log(doc.id, " => ", doc.data());
  
-console.log(rollSel.value)
+//console.log(rollSel.value)
 let representativeString = doc.data().studentsRepresentatives;
 let reprArray = representativeString.split(',');
-console.log(reprArray);
+//console.log(reprArray);
 
 if(reprArray.includes(name.value) ==false || reprArray.includes(key.value)==false){
    
@@ -280,7 +280,7 @@ SignInRef3.addEventListener('click', async function(e){
 const querySnapshot = await getDocs(q);
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
-  console.log(doc.id, " => ", doc.data())
+  //console.log(doc.id, " => ", doc.data())
   if(doc.data().chair !==String(name.value) 
 || doc.data().accountePass !== String(key.value)){
    // e.preventDefault();
