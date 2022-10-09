@@ -97,6 +97,19 @@ const bookli = document.getElementById('bookli')
     yourAvatar = nam.slice(0,1)+ nam.slice(-1);
     document.getElementById('instId').innerHTML = inst ;
 
+function signInStart (){
+      if(nam != undefined 
+          && inst != undefined 
+          && roll != undefined){
+            let signIn = document.getElementById('signin');
+            signIn.href = "./yourCampus.html"
+          } else{
+           
+            
+          
+      signInOptionsDiv.style.visibility = 'visible';
+     }}
+
    function invironnement(){
     
       switch(roll){
