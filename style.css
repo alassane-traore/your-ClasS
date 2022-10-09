@@ -414,6 +414,7 @@ list-style-position: inside;
     justify-content: center;
     background-color: transparent;
     text-align: start;
+    visibility: hidden;
     
     
 }
