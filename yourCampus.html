@@ -462,7 +462,7 @@ undoSelect.appendChild(undoOpton);
     
 
            
-        
+     await deleteDoc(doc(db, inst,  `null(clone)`));    
       
 removeIt.addEventListener('click', async function(){
 
@@ -557,12 +557,16 @@ alert('You do not have any right to undo this booking !')
 
     } 
 
+                    undoSelect.addEventListener('change', function(){
+  undoButton.style.visibility ='visible';
+})
 
     undoButton.addEventListener('click',()=>{
 setunbook_customID ();
 deletebookedAmphi();
 localStorage.removeItem('booked');
 localStorage.removeItem('bis');
+ undoButton.style.visibility = 'hidden';
 })
 
         
