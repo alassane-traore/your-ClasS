@@ -12,13 +12,13 @@
 <body id="regbody">
     <script src="./index.js"></script>
     <h1 id="regisWelcome"> <strong> ClasS!</strong></h1>
-    <h4> Kindly fill the registration form to create an institution Account! </h4>  
+    <h4 style="text-align: center;" > Kindly fill the registration form to create an institution Account! </h4>  
     <form action="" method="post">
 
-            <div>
+            <div style="text-align:left ;">
                 <ul>
 
-                    <li>
+                    <li  >
                         <h1 id="chair"> Institution representative </h1>
                     </li>
                 </ul>
@@ -38,43 +38,46 @@
         
             
             <div>
-                <ul>
-                    <li>
+                <ul style="text-align:left ;">
+                    <li   >
                         <h1> Institution  </h1>
                     </li>
                 </ul>
+                <div style="text-align: left;" >
                 <label for="instname"> Institution Name</label>
                 <input type="text" id="InstName" placeholder="Institution Fullame"> <br> <br>
                 <label for="Address"> Address </label>
                 <input type="text" id="Instaddress" placeholder="Physical address" > <br> <br>
                 <label for="Email"> Email</label>
                 <input type="email" name="instemail" id="Instemail"> <br> <br>
+            </div>
                 <span>
-                   <div>
-                       <label for="inChargeK" class="inchargeKLab" > Keys for Perons in Charge(separated with commas) </label>    
-                    <label for="inCharge" class="inCharge"> List of Persons in Charge(separated with commas) </label>    
-                    
-                    <textarea name="" id="inChargeK"  cols="39" rows="7"></textarea>
-                <textarea name="" id="inCharge" cols="37" rows="7"></textarea>
+                   <div class="members" >
+                       <label for="inChargeK" class="inchargeKLab" > Keys for representatives </label> <br>  
+                        <textarea name="" id="inChargeK"  cols="39" rows="7">J252022,J262022,j272022 
+                            Kindly remove  all this text and paste  here the Keys you want your institution representatives to sign in with! 
+                            The Keys above are just an example showing how you must structure your data.So NO SPACE at the beginning, NO SPACE  between Keys, only commas are separators ! 
+                        </textarea> <br>
+
+                    <label for="inCharge" class="inCharge"> List of representatives </label> <br>  
+                <textarea name="" id="inCharge" cols="37" rows="7">Alassane TRAORE,Joseph Ki-ZERBO,Zanga P. Konate, 
+                            Kindly remove  all this text and paste  here the Complete list of representatives, egg. Class representatives and Lecturers ! 
+                            The Names above are just an example showing how you must structure your data.So NO SPACE at the beginning, NO SPACE  between two different names, only commas are separators! 
+                </textarea>
                         
                     
                    </div>
-<br> <br>
-                   <div>
-                    <label for="students Keys" class="stkey" id="Keys"> Students Keys separated with commas </label> 
-                    <label for="student List" class="Stlist" > Complete Student List (names separated with commas) </label>
+                   <div class="members" >
+                    <label for="students Keys" class="stkey" id="Keys"> Students Keys </label> 
                     <br>
-                    <textarea name="" id="stkey" cols="39" rows="9">
-
-                    </textarea>
-                     
-                     
-                        <textarea name="Stlist" id="Stlist" cols="41" rows="9"  >
-    
-                    </textarea> 
-                
-                     
+                    <textarea name="" id="stkey" cols="39" rows="9">Same as above !
                     
+                    </textarea> <br>
+                    <label for="student List" class="Stlist" > Complete Student List </label> <br>
+                    
+                        <textarea name="Stlist" id="Stlist" cols="41" rows="9"  > Same as above !
+                           
+                    </textarea> 
 
                    </div>
 
@@ -251,7 +254,7 @@ let config = {
   //},
     parseDate: (datestr, format) => {
     return moment(datestr, format, true).toDate()},
-   disableMobile: "true",
+   // disableMobile: "true",
     altInput: true ,
     altFormat: "Y-m-d",
     
