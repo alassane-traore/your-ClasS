@@ -293,7 +293,7 @@ list-style-position: inside;
 
 
 #regisWelcome{
-    margin-left: 31%;
+    text-align: center;
 }
 
 #regbody{
@@ -304,34 +304,16 @@ list-style-position: inside;
    color: aliceblue;
    
 }
-.inchargeKLab{
-    margin-bottom: 0%;
-}
-#inChargeK{
-    margin-top: 0vh;
+
+.members{
+    align-content: center;
+    text-align: center;
 }
 
-#Stlist{
-    margin-left: 9%;
-}
-.Stlist{
-    margin-left: 12%; 
-}
 
-#inCharge{
-    margin-left: 9%;  
-} 
-
-.inCharge{
-    margin-left: 47%;  
-}
-
-.stkey{
-    margin-left: 7%;     
-}
 
 .rebatom{
-    margin-left: 43%;
+    text-align: center;
 }
 
 #instChoose{
@@ -425,12 +407,5 @@ list-style-position: inside;
 
 .homenav{
     text-align: right;
-}
-
-#groupLabel{
-color:white;
-}
-#timeLabel{
-color:white ;
 }
 
