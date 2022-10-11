@@ -20,7 +20,7 @@
         <nav class="homenav">  
          <a onclick="accounteCondition ()" href="registration.html" id="accounte">CREATE ACCOUNTE !    </a>  
          
-         <a id="signin" onclick="signInStart ()" > SIGN IN !</a>  
+         <a id="signin"  onclick="signInStart ()" > SIGN IN !</a>  
          <a onclick= "choice ()" id="about"  >ABOUT </a> 
           <a href="mailto:alassane.traore@student.moringaschool.com"[] id = "contact" >CONTACT US !</a> 
          </nav>
@@ -78,9 +78,7 @@ const signInRef2 = document.getElementById('sigInref2');
 const SignInRef3 = document.getElementById('sigInref3');
 
 
- //function signInStart (){
- // signInOptionsDiv.style.visibility = 'visible';
-//}
+ 
 function rollsell(){
   signInForm.style.visibility = 'visible';
   switch(rollSel.value){
@@ -330,9 +328,9 @@ let config = {
  // },
     parseDate: (datestr, format) => {
     return moment(datestr, format, true).toDate()},
-    disableMobile: "true",
+   // disableMobile: "true",
     altInput: true ,
-    altFormat: "Y-m-d",
+    altFormat: "Y-m-d H:i",
     
     //dateFormat: "Y-m-d",
    
