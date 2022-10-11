@@ -4,7 +4,8 @@
 
             <head>
         <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+      <!--  <meta http-equiv="refresh" content="25"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title id="home-title"> Welcome to ClasS !</title>
                 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -46,15 +47,17 @@
                       
                       <label style="color:white ;"  for="group">Group</label>
                       <input id="group" type="text" required > <br>
-                      <label style="color: white;"  for="Time"> will be free </label>
-                      <input id="time" type="datetime-local" > 
+                      <label style="color: white;"  for="Time"> from</label>
+                      <input id="fromtime" type="datetime-local" > <br>
+                      <label style="color: white;"  for="Time"> to </label>
+                      <input id="time" type="datetime-local" >
                       <input id="repr" type="submit" value="ok">
                      </form>
                       
                 </li>
                 
 
-                   <footer class="avail" id="avail">
+                   <footer onload="Javascript:reloadData(3000)" class="avail" id="avail">
                     <div class="avail"  id="avail-button" >AVAILLABLE</div> 
                     <strong style="color: chartreuse;" >
 
@@ -148,6 +151,7 @@
 
 
             <script type="module">
+
               // Import the functions you need from the SDKs you need
               import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
               import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
@@ -178,7 +182,7 @@
           
           // Initialize Cloud Firestore and get a reference to the service
           const db = getFirestore();
-          
+    
           
 
 
@@ -210,7 +214,9 @@
  //undoOpton = document.getElementById('toUndo'),
 undoDiv = document.getElementById('undoDiv'),
 undoButton = document.getElementById('undoButton'),
-meassage = document.getElementById('msg')
+meassage = document.getElementById('msg'),
+occupstart = document.getElementById('fromtime');
+
 
 
 let roll = localStorage.getItem('roll'),
@@ -219,8 +225,6 @@ nam = localStorage.getItem('Name');
 
 
 
-
-         
 
 
           
@@ -381,18 +385,23 @@ alert('The booking could not succed ! Note: The Group precision is mendatory and
         
 
           var ref = doc (db, inst, `${theOption.value}(booked)` );
+          let longOccupstart = String(occupstart.value);
+          let longTill = String(time.value);
+          let shortOccupstart = longOccupstart.slice(11,16)
+          let shortTill =longTill.slice(11,16);
           const docRef = await setDoc(
           ref,
           { 
             boocked: theOption.value ,
-          occupMessage:  `${group.value} is using ${theOption.value}  till ${time.value}`,
+          occupMessage:  `${group.value}: ${theOption.value} from ${shortOccupstart}  till ${shortTill}`,
+          from :occupstart.value,
           till: time.value,
           isBooked : true,
           group: `${group.value}` 
           },
           )
           .then(()=>
-          alert(`${group.value} is using ${theOption.value} till ${time.value}`)
+          alert(` booking of ${theOption.value} from ${occupstart.value} till ${time.value} successfull!`)
           )
           .catch((error)=>
           alert(`failed to set ${theOption.value} `+ error)
@@ -430,9 +439,31 @@ alert('The booking could not succed ! Note: The Group and Time precisions are me
     }
   
 
+
+
+
+   
+
+
     classrep.addEventListener('click', async function book (e){
       e.preventDefault();
+      //let till = docSnap.data().till ;
+      const docRef = doc(db, inst, `${bookButton.value}(booked)`);
+const docSnap = await getDoc(docRef);
 
+      
+      //console.log(till)
+//let oldbegin = doc.data().from;
+if (docSnap.exists()) {
+ // console.log("Document data:", docSnap.data());
+  let till = docSnap.data().till
+  //console.log(till)
+  let begin = occupstart.value;
+if (new Date(begin) - new Date () > 10800000 || new Date(till) - new Date(begin) > 0  ){
+
+  alert (`kindly do not  proceed more than 3 hours before class begin ! Or
+  ${bookButton.value} will not be free at ${begin}! Kindly how a look at occupancy otherview!`)
+} else{
   classrep.style.visibility= 'hidden';
   //undoDiv.style.visibility = 'visible';
   
@@ -440,7 +471,22 @@ alert('The booking could not succed ! Note: The Group and Time precisions are me
   setBookedAmphi_customID();
 deleteclonedAmphi();
 
-    }) 
+}
+
+
+
+} else {
+  // doc.data() will be undefined in this case
+  console.log("No such document!");
+}
+
+
+
+     })
+
+  
+
+    
 
     let yourBooking = localStorage.getItem('booked');
     let undoOpton = document.createElement('option');
@@ -461,7 +507,7 @@ undoSelect.appendChild(undoOpton);
   
    
     
-    
+    await deleteDoc (doc(db, inst, "BOOK-AMPHI(booked)")); 
 
     await deleteDoc(doc(db, inst,  `null(clone)`));   
           
@@ -491,7 +537,7 @@ const querySnapshotqq = await getDocs(qqq);
         querySnapshotqq.forEach((doc)=> {
           //console.log(doc.id, "=>", doc.data());
           let deadline = doc.data().till
-          if( new Date(deadline)- new Date()  <= 0) {
+          if( new Date(deadline)- new Date()  <= 10800000 ) {
             let newForBooking= document.createElement('option');
           bookButton.appendChild(newForBooking);
           newForBooking.value = `${doc.data().boocked}`;
@@ -500,17 +546,52 @@ const querySnapshotqq = await getDocs(qqq);
           availL.appendChild(othernewAvail);
           othernewAvail.innerHTML = `${doc.data().boocked}`;
 
-          } else{
-            let mssage = document.createElement('li');
-          document.getElementById('occupspan').appendChild(mssage);
-          mssage.innerHTML = doc.data().occupMessage;
-          mssage.id = doc.data().occupMessage 
-          }
+          } 
           
           
         
         })
 
+        querySnapshotqq.forEach((doc)=> {
+          let deadline = doc.data().till
+          if( new Date(deadline)- new Date()  > 0 )
+          {
+           // function timer(){
+  //let hrs = new Date(deadline).getHours();
+           // let mins = new Date(deadline).getMinutes();
+           // let secs = new Date(deadline).getSeconds();
+            //if(mins < 10 ){
+            //  mins = '0'+ mins;
+           // }
+           // if (secs < 10){
+            //  secs = '0' +secs 
+            //}
+           // let timeIt = `${hrs}:${mins}:${secs}`
+            let mssage = document.createElement('li');
+            let occupMssage = doc.data().occupMessage;
+          document.getElementById('occupspan').appendChild(mssage);
+          //let completeMsge = `${occupMssage}[ ${timeIt}]`
+            mssage.innerHTML = occupMssage
+            //completeMsge --
+          mssage.id = doc.data().occupMessage 
+
+}
+            
+//setInterval( ()=>{
+ 
+
+//}
+//, 1000 )
+
+        }
+        
+      //  }
+        
+        )
+      
+setInterval(()=>{
+  location.reload()
+}, 120000 )
 
         let verify = localStorage.getItem('booked');
         async function setunbook_customID () {
@@ -585,6 +666,7 @@ let autorefresh = localStorage.getItem('bis');
     localStorage.removeItem('booked')
   }else{
     let timeSet = new Date(autorefresh)  - new Date();
+
     let mili = timeSet/ 60000;
     let min =  Math.round(mili);
 let timeCounte = document.createElement ('li');
@@ -603,26 +685,12 @@ if (min <= 9 ){
   alert('booking expired!Learnig facility is availlable for other users!')
 }
   }
+
   
+ // let  d = "2022-10-10T22:45:00.000Z"
         
         
- 
-       
-           
-
-
-
-
-
-            </script>
- <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"> </script>
-
-<script>
-
-
-let config = {
+  let config = {
   enableTime: true, 
     dateFormat: "Z",
 
@@ -636,8 +704,8 @@ let config = {
     return moment(datestr, format, true).toDate()},
    // disableMobile: "true",
     altInput: true ,
-    altFormat: "Y-m-d",
-
+    altFormat: "Y-m-d H:i",
+   // mode: "range"
     
     //dateFormat: "Y-m-d",
    
@@ -648,17 +716,21 @@ let config = {
 
 flatpickr("input[type = datetime-local]", config
 );
+       
+           
 
 
 
-   
 
 
+            </script>
+
+            
+ <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"> </script>
 
 
-    
-
-</script>
 
 
 
